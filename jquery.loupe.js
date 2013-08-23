@@ -7,6 +7,7 @@
 	$.fn.loupe = function (arg) {
 		var options = $.extend({
 			loupe: 'loupe',
+			clear: false,
 			width: 200,
 			height: 150
 		}, arg || {});
@@ -16,6 +17,10 @@
 				$small = $this.is('img') ? $this : $this.find('img:first'),
 				move, hide = function () { $loupe.hide(); },
 				time;
+
+			if (options.clear) {
+				$this.data('loupe', null);
+			}
 
 			if ($this.data('loupe') != null) {
 				return $this.data('loupe', arg);
